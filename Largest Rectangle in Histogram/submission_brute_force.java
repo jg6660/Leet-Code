@@ -1,16 +1,14 @@
 public class Solution {
     public int largestRectangleArea(int[] heights) {
-        int maxarea = 0;
-        for (int i = 0; i < heights.length; i++) {
-            for (int j = i; j < heights.length; j++) {
-                int minheight = Integer.MAX_VALUE;
-                for (int k = i; k <= j; k++) minheight = Math.min(
-                    minheight,
-                    heights[k]
-                );
-                maxarea = Math.max(maxarea, minheight * (j - i + 1));
+        int maxArea = 0;
+        int length = heights.length;
+        for (int i = 0; i < length; i++) {
+            int minHeight = Integer.MAX_VALUE;
+            for (int j = i; j < length; j++) {
+                minHeight = Math.min(minHeight, heights[j]);
+                maxArea = Math.max(maxArea, minHeight * (j - i + 1));
             }
         }
-        return maxarea;
+        return maxArea;
     }
 }
